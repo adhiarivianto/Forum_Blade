@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,142 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $movie_list =
-        [
-            [ 'poster'  => "john_wick.jpg",
-            'judul' => "John Wick",
-            'genre' => "Action",
-            'durasi' => "1h41m",
-            'rating' => 5],
+Route::get('/', [MovieController::class,'movie_list']);
 
-            [ 'poster'  => "venom.jpg",
-            'judul' => "Venom",
-            'genre' => "Action",
-            'durasi' => "1h52m",
-            'rating' => 4],
+Route::get('/action', [MovieController::class,'action_list']);
 
-            [ 'poster'  => "aquaman.jpg",
-            'judul' => "Aquaman",
-            'genre' => "Action",
-            'durasi' => "2h22m",
-            'rating' => 2],
+Route::get('/horror', [MovieController::class,'horror_list']);
 
-            [ 'poster'  => "the_nun.jpg",
-            'judul' => "The Nun",
-            'genre' => "Horror",
-            'durasi' => "1h36m",
-            'rating' => 3],
-
-            [ 'poster'  => "conjuring.jpg",
-            'judul' => "The Conjuring",
-            'genre' => "Horror",
-            'durasi' => "1h52m",
-            'rating' => 4],
-
-        ];
-    return view('home',[
-        'title' => "Home",
-        'logo' => "logo.png",
-        'welcoming' => "welcome.png",
-        'mvlist' => $movie_list
-    ]);
-});
-
-Route::get('/action', function(){
-    $movie_list =
-    [
-        [ 'poster'  => "john_wick.jpg",
-        'judul' => "John Wick",
-        'genre' => "Action",
-        'durasi' => "1h41m",
-        'rating' => 5],
-
-        [ 'poster'  => "venom.jpg",
-        'judul' => "Venom",
-        'genre' => "Action",
-        'durasi' => "1h52m",
-        'rating' => 4],
-
-        [ 'poster'  => "aquaman.jpg",
-        'judul' => "Aquaman",
-        'genre' => "Action",
-        'durasi' => "2h22m",
-        'rating' => 2],
-
-        [ 'poster'  => "the_nun.jpg",
-        'judul' => "The Nun",
-        'genre' => "Horror",
-        'durasi' => "1h36m",
-        'rating' => 3],
-
-        [ 'poster'  => "conjuring.jpg",
-        'judul' => "The Conjuring",
-        'genre' => "Horror",
-        'durasi' => "1h52m",
-        'rating' => 4],
-
-    ];
-    return view('action',[
-        'title' => "Genre | Action",
-        'logo' => "logo.png",
-        'image' => "action.png",
-        'mvlist' => $movie_list
-    ]);
-});
-
-Route::get('/horror', function(){
-    $movie_list =
-    [
-        [ 'poster'  => "john_wick.jpg",
-        'judul' => "John Wick",
-        'genre' => "Action",
-        'durasi' => "1h41m",
-        'rating' => 5],
-
-        [ 'poster'  => "venom.jpg",
-        'judul' => "Venom",
-        'genre' => "Action",
-        'durasi' => "1h52m",
-        'rating' => 4],
-
-        [ 'poster'  => "aquaman.jpg",
-        'judul' => "Aquaman",
-        'genre' => "Action",
-        'durasi' => "2h22m",
-        'rating' => 2],
-
-        [ 'poster'  => "the_nun.jpg",
-        'judul' => "The Nun",
-        'genre' => "Horror",
-        'durasi' => "1h36m",
-        'rating' => 3],
-
-        [ 'poster'  => "conjuring.jpg",
-        'judul' => "The Conjuring",
-        'genre' => "Horror",
-        'durasi' => "1h52m",
-        'rating' => 4],
-
-    ];
-    return view('horror',[
-        'title' => "Genre | Horror",
-        'logo' => "logo.png",
-        'image' => "horror.png",
-        'mvlist' => $movie_list
-    ]);
-});
-
-Route::get('/about',function(){
-    return view('about',[
-        'title' => "About",
-        'logo' => "logo.png",
-        'foto' => "foto_adhi.png",
-        'nama' => "Adhi Renaldy Arivianto",
-        'nim' => "2440027524",
-        'kuliah' => "BINUS University",
-        'jurusan' => "Computer Science",
-        'matkul' => "Web Programming",
-        'kelas' => "LH01"
-    ]);
-});
+Route::get('/about',[MovieController::class,'profile']);

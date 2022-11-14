@@ -9,9 +9,8 @@
     <p class="text-center fs-5 ">Dengan Website ini kalian dapat melihat film-film apa saja yang telah aku review, tentunya menurut pendapatku pribadi. :)</p>
 </div>
 
-<div class="mt-5">
     @include('partials.table')
-</div>
+
 
 @endsection
 

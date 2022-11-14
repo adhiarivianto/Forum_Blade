@@ -1,79 +1,133 @@
-<table class="table table-dark table-striped table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">Poster</th>
-        <th scope="col">Judul</th>
-        <th scope="col">Genre</th>
-        <th scope="col">Durasi</th>
-        <th scope="col">Rating</th>
-        <th scope="col">Penilaian</th>
-      </tr>
-    </thead>
-    <tbody>
+<style>
+    .scroll{
+        height: 300px;
+        overflow-y: auto;
+    }
+    .scroll thead th { position: sticky; top: 0; z-index: 1; }
+</style>
 
-    @if ($title === "Home")
+<div class="mt-5 scroll">
+    <table class="table table-dark table-bordered ">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">Movie</th>
+            <th scope="col">Penilaian</th>
+          </tr>
+        </thead>
+        <tbody>
 
-        @foreach ( $mvlist as $list )
-            <tr class="text-center">
-                <td><img src="img/{{ $list['poster'] }}" alt="" width="100" height="120"></td>
-                <td>{{ $list['judul'] }}</td>
-                <td>{{ $list['genre'] }}</td>
-                <td>{{ $list['durasi'] }}</td>
-                <td><img src="img/star.png" alt="" width="15" height="15">{{ $list['rating'] }}</td>
-                @if ($list['rating']>3)
-                    <td class="text-success fw-bold">Bagus</td>
-                @elseif ($list['rating']<3)
-                    <td class="text-danger fw-bold">Jelek</td>
-                @else
-                    <td class="text-warning fw-bold">B aja</td>
+        @if ($title === "Home")
+
+            @foreach ( $mvlist as $list )
+                <tr class="text-center">
+                    <td>
+                        <div class="card mb-3 text-white bg-dark border-dark" >
+                            <div class="row g-0">
+                              <div class="col-md-3">
+                                <img src="img/{{ $list['poster'] }}" alt="" width="100" height="120">
+                              </div>
+                              <div class="col-md-6">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{ $list['judul'] }}</h5>
+                                  <p class="card-text">{{ $list['genre'] }}  ‧  {{ $list['durasi'] }}</p>
+                                  <p class="card-text"><small class="text-muted">Reviewed on {{ $list['rvwdate'] }}</small></p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </td>
+
+                    <td>
+                        <div><img src="img/star.png" alt="" width="15" height="15">{{ $list['rating'] }}</div>
+                        @if ($list['rating']>3)
+                            <div class="text-success fw-bold">Bagus</div>
+                        @elseif ($list['rating']<3)
+                            <div class="text-danger fw-bold">Jelek</div>
+                        @else
+                            <div class="text-warning fw-bold">Jelek</div>
+                        @endif
+                    </td>
+
+                </tr>
+            @endforeach
+
+        @elseif ($title === "Genre | Action")
+
+            @foreach ( $mvlist as $list )
+                @if ($list['genre'] === "Action")
+                    <tr class="text-center">
+                        <tr class="text-center">
+                            <td>
+                                <div class="card mb-3 text-white bg-dark border-dark" >
+                                    <div class="row g-0">
+                                      <div class="col-md-3">
+                                        <img src="img/{{ $list['poster'] }}" alt="" width="100" height="120">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="card-body">
+                                          <h5 class="card-title">{{ $list['judul'] }}</h5>
+                                          <p class="card-text">{{ $list['genre'] }}  ‧  {{ $list['durasi'] }}</p>
+                                          <p class="card-text"><small class="text-muted">Reviewed on {{ $list['rvwdate'] }}</small></p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </td>
+
+                            <td>
+                                <div><img src="img/star.png" alt="" width="15" height="15">{{ $list['rating'] }}</div>
+                                @if ($list['rating']>3)
+                                    <div class="text-success fw-bold">Bagus</div>
+                                @elseif ($list['rating']<3)
+                                    <div class="text-danger fw-bold">Jelek</div>
+                                @else
+                                    <div class="text-warning fw-bold">Jelek</div>
+                                @endif
+                            </td>
+                    </tr>
                 @endif
-            </tr>
-        @endforeach
+            @endforeach
 
-    @elseif ($title === "Genre | Action")
+        @elseif ($title === "Genre | Horror")
 
-        @foreach ( $mvlist as $list )
-            @if ($list['genre'] === "Action")
-                <tr class="text-center">
-                    <td><img src="img/{{ $list['poster'] }}" alt="" width="100" height="120"></td>
-                    <td>{{ $list['judul'] }}</td>
-                    <td>{{ $list['genre'] }}</td>
-                    <td>{{ $list['durasi'] }}</td>
-                    <td><img src="img/star.png" alt="" width="15" height="15">{{ $list['rating'] }}</td>
-                    @if ($list['rating']>3)
-                        <td class="text-success fw-bold">Bagus</td>
-                    @elseif ($list['rating']<3)
-                        <td class="text-danger fw-bold">Jelek</td>
-                    @else
-                        <td class="text-warning fw-bold">B aja</td>
-                    @endif
-                </tr>
-            @endif
-        @endforeach
+            @foreach ( $mvlist as $list )
+                @if ($list['genre'] === "Horror")
+                    <tr class="text-center">
+                        <tr class="text-center">
+                            <td>
+                                <div class="card mb-3 text-white bg-dark border-dark" >
+                                    <div class="row g-0">
+                                      <div class="col-md-3">
+                                        <img src="img/{{ $list['poster'] }}" alt="" width="100" height="120">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="card-body">
+                                          <h5 class="card-title">{{ $list['judul'] }}</h5>
+                                          <p class="card-text">{{ $list['genre'] }}  ‧  {{ $list['durasi'] }}</p>
+                                          <p class="card-text"><small class="text-muted">Reviewed on {{ $list['rvwdate'] }}</small></p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </td>
 
-    @elseif ($title === "Genre | Horror")
+                            <td>
+                                <div><img src="img/star.png" alt="" width="15" height="15">{{ $list['rating'] }}</div>
+                                @if ($list['rating']>3)
+                                    <div class="text-success fw-bold">Bagus</div>
+                                @elseif ($list['rating']<3)
+                                    <div class="text-danger fw-bold">Jelek</div>
+                                @else
+                                    <div class="text-warning fw-bold">Jelek</div>
+                                @endif
+                            </td>
+                    </tr>
+                @endif
+            @endforeach
 
-        @foreach ( $mvlist as $list )
-            @if ($list['genre'] === "Horror")
-                <tr class="text-center">
-                    <td><img src="img/{{ $list['poster'] }}" alt="" width="100" height="120"></td>
-                    <td>{{ $list['judul'] }}</td>
-                    <td>{{ $list['genre'] }}</td>
-                    <td>{{ $list['durasi'] }}</td>
-                    <td><img src="img/star.png" alt="" width="15" height="15">{{ $list['rating'] }}</td>
-                    @if ($list['rating']>3)
-                        <td class="text-success fw-bold">Bagus</td>
-                    @elseif ($list['rating']<3)
-                        <td class="text-danger fw-bold">Jelek</td>
-                    @else
-                        <td class="text-warning fw-bold">B aja</td>
-                    @endif
-                </tr>
-            @endif
-        @endforeach
-
-    @endif
+        @endif
 
 
-    </tbody>
-  </table>
+        </tbody>
+      </table>
+</div>

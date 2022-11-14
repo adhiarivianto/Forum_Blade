@@ -1,7 +1,7 @@
 @extends('layouts.display')
 
 @section('container')
-<div class="d-flex justify-content-center mt-5">
+<div class="d-flex justify-content-center mt-1">
     <div class="card border-success mb-3" style="max-width: 540px;">
         <div class="row g-0">
           <div class="col-md-4">
@@ -18,7 +18,17 @@
       </div>
 </div>
 
-<div class="mt-3 text-white">
-    <p class="text-center fs-5 fw-bold">Terima Kasih! </p>
+<div class="mb-4 text-white">
+    <p class="text-center fs-6 fw-bold">Terima Kasih! </p>
+</div>
+
+<div class="mb-4 text-white">
+    <p class="text-center fs-5 fw-bold">Upcoming Review</p>
+</div>
+
+<div class="d-flex justify-content-evenly">
+    <img src="img/{{ $upcoming1 }}" alt="foto_profile" width="200" height="240">
+    <img src="img/{{ $upcoming2 }}" alt="foto_profile" width="200" height="240">
+    <img src="img/{{ $upcoming3 }}" alt="foto_profile" width="200" height="240">
 </div>
 @endsection
